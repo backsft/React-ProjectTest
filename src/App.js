@@ -2,6 +2,7 @@ import './App.css';
 import { Header } from './Header';
 import Footer from './Footer';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { blog } from './Data/Blog';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 
       <Header />
 
-      <Container fluid>
+      {/* <Container fluid>
 
         <Container>
           <Row>
@@ -101,6 +102,19 @@ function App() {
           </Row>
 
         </Container>
+      </Container> */}
+
+      <Container>
+        <Row>
+          {blog.map((v,i)=>{
+
+            return ( <ProductItems pitems={v}/>)
+          }
+        )
+          }
+        
+
+        </Row>
       </Container>
 
       <Footer />
@@ -111,3 +125,26 @@ function App() {
 }
 
 export default App;
+
+
+
+
+function ProductItems({pitems}) {
+  return (
+    <Col lg="3" md="6">
+
+      <Card>
+        <Card.Body>
+          <Card.Title>{pitems.title}</Card.Title>
+          <Card.Text>
+          {pitems.body}
+          </Card.Text>
+          <Button variant="primary">Go somewhere</Button>
+        </Card.Body>
+      </Card>
+
+
+    </Col>
+  )
+}
+
